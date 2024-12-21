@@ -6,6 +6,7 @@ public class Motorcycle extends Vehicle implements Rentable {
     private String brakingSystem; //Values: Disc brakes, Drum brakes, Combined brakes, ABS (Anti-lock Braking System)
     
     public Motorcycle(String noOfWheels, String suspensionType, String brakingSystem) {
+        super();
         this.noOfWheels = noOfWheels;
         this.suspensionType = suspensionType;
         this.brakingSystem = brakingSystem;

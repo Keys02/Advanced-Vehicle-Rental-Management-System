@@ -7,6 +7,7 @@ public class Truck extends Vehicle implements Rentable {
     private int noOfDoors;
     
     public Truck(double loadCap, double towCap, String type, int noOfDoors) {
+        super();
         this.loadCap = loadCap;
         this.towCap = towCap;
         this.type = type;

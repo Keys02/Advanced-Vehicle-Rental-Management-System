@@ -3,12 +3,12 @@ package avrms;
 public class RentalAgency {
     private String agencyName;
     private String location;
-    private String[] vehiclesAtRent;
+    private String[] vehiclesFleet;
     
-    public RentalAgency(String agencyName, String location, String[] vehicles) {
+    public RentalAgency(String agencyName, String location, String[] vehiclesFleet) {
         this.agencyName = agencyName;
         this.location = location;
-        this.vehiclesAtRent = vehicles;
+        this.vehiclesFleet = vehiclesFleet;
     }
     
     /******************************
@@ -18,13 +18,13 @@ public class RentalAgency {
     
     public String getLocation() { return this.location; }
     
-    public String getVehiclesAtRent(){
+    public String getVehiclesFleet(){
         String vehiclesList = "";
-       for(int i = 0; i < vehiclesAtRent.length; i++) {
-           if(i < vehiclesAtRent.length - 1){
-               vehiclesList += vehiclesAtRent[i] + "," + " ";
+       for(int i = 0; i < vehiclesFleet.length; i++) {
+           if(i < vehiclesFleet.length - 1){
+               vehiclesList += vehiclesFleet[i] + "," + " ";
            } else {
-               vehiclesList += vehiclesAtRent[i];           }
+               vehiclesList += vehiclesFleet[i];           }
        }
        return vehiclesList;
     }
@@ -32,15 +32,9 @@ public class RentalAgency {
     /******************************
                 Setters
     *******************************/
-    public void setAgencyName(String name) {
-        this.agencyName = agencyName;
-    }
+    public void setAgencyName(String name) { this.agencyName = agencyName; }
     
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    public void setLocation(String location) { this.location = location; }
     
-    public void setVehicles(String[] vehicles){
-        this.vehiclesAtRent = vehicles;
-    }
+    public void setVehicles(String[] vehicles){ this.vehiclesFleet = vehicles; }
 }

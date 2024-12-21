@@ -8,6 +8,7 @@ public class Car extends Vehicle implements Rentable {
     private String color;
     
     public Car(double trunkSize, int noOfDoors, String fuelType, String model, String color) {
+        super();
         this.trunkSize = trunkSize;
         this.noOfDoors = noOfDoors;
         this.fuelType = fuelType;
