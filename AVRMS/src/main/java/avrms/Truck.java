@@ -6,12 +6,30 @@ public class Truck extends Vehicle implements Rentable {
     private String type;
     private int noOfDoors;
     
-    public Truck(double loadCap, double towCap, String type, int noOfDoors) {
-        super();
-        this.loadCap = loadCap;
-        this.towCap = towCap;
-        this.type = type;
-        this.noOfDoors = noOfDoors;
+    /******************************
+                Constructor
+    *******************************/
+    public Truck(
+            String motorcycleId, 
+            String model,
+            double baseRentalRate,
+            boolean isAvailable,
+            String year,
+            String registrationNum,
+            int noOfSeats,
+            String make,
+            String renterId,
+            Integer[] customerRatings,
+            double loadCap, 
+            double towCap, 
+            String type, 
+            int noOfDoors
+    ) {
+            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customerRatings);
+            this.loadCap = loadCap;
+            this.towCap = towCap;
+            this.type = type;
+            this.noOfDoors = noOfDoors;
     }
     
     /*******************************

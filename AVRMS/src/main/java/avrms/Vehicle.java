@@ -1,5 +1,9 @@
 package avrms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 abstract class Vehicle {
     private String vehicleId;
     private String model;
@@ -10,8 +14,37 @@ abstract class Vehicle {
     private int noOfSeats;
     private String make; //Brand of the car
     private String renterId;
+    private Integer[] customersRatings;
     
-    /*****************************
+    /******************************
+            Constructor
+    *******************************/
+    public Vehicle(
+                String vehicleId, 
+                String model, 
+                double baseRentalRate, 
+                boolean isAvailable,
+                String year,
+                String registrationNum,
+                int noOfSeats,
+                String make,
+                String renterId,
+                Integer[] customersRatings
+            ) {
+                this.vehicleId = vehicleId;
+                this.model = model;
+                this.baseRentalRate = baseRentalRate;
+                this.isAvailable = isAvailable;
+                this.year = year;
+                this.registrationNum = registrationNum;
+                this.noOfSeats = noOfSeats;
+                this.make = make;
+                this.renterId = renterId;
+                this.customersRatings = customersRatings;
+    }
+    
+    
+    /******************************
             Abstract methods
     *******************************/
     abstract float calculateRentalCost(int days);
@@ -39,6 +72,18 @@ abstract class Vehicle {
     
     public String getRenterId() { return this.renterId; }
     
+//    public int getRating() { return this.rating; }
+    
+    public int getRating() {
+        // Average of the customers ratings
+        int sumRating = 0;
+        for(int i = 0; i < (this.customersRatings).length; i++){
+            sumRating += (this.customersRatings)[i];
+        }
+        int rating = sumRating / (this.customersRatings).length;
+        return rating;
+    }
+    
     
     /*****************************
                 Setters
@@ -60,5 +105,18 @@ abstract class Vehicle {
     public void setMake(String make) { this.make = make; }
     
     public void setRenterId(String id) { this.renterId = id; }
+    
+    // Rating system implementation
+    public String setRating(Customer customerId, int rating){
+        //Check if the rating is a number from 1 - 5
+        if(rating < 1 | rating > 5) {
+            return "Rating must be a number from 1 - 5";
+        } else {
+            List<Integer> customersRatingsList = new ArrayList<Integer>(Arrays.asList(this.customersRatings));
+            customersRatingsList.add(rating);
+            this.customersRatings = customersRatingsList.toArray(this.customersRatings);
+            return "Thanks for rating :)";
+        }
+    }
     
 }

@@ -5,11 +5,28 @@ public class Motorcycle extends Vehicle implements Rentable {
     private String suspensionType; //Values: Telescopic Forks, Upside-Down Forks, Dual Shock Absorbers, Monoshock Suspension, Air Suspension, 
     private String brakingSystem; //Values: Disc brakes, Drum brakes, Combined brakes, ABS (Anti-lock Braking System)
     
-    public Motorcycle(String noOfWheels, String suspensionType, String brakingSystem) {
-        super();
-        this.noOfWheels = noOfWheels;
-        this.suspensionType = suspensionType;
-        this.brakingSystem = brakingSystem;
+    /******************************
+                Constructor
+    *******************************/
+    public Motorcycle(
+            String motorcycleId, 
+            String model,
+            double baseRentalRate,
+            boolean isAvailable,
+            String year,
+            String registrationNum,
+            int noOfSeats,
+            String make,
+            String renterId,
+            Integer[] customerRatings,
+            String noOfWheels,
+            String suspensionType, 
+            String brakingSystem
+    ) {
+            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customerRatings);
+            this.noOfWheels = noOfWheels;
+            this.suspensionType = suspensionType;
+            this.brakingSystem = brakingSystem;
     }
     
     /******************************

@@ -4,16 +4,32 @@ public class Car extends Vehicle implements Rentable {
     private double trunkSize;
     private int noOfDoors;
     private String fuelType;
-    private String model;
     private String color;
     
-    public Car(double trunkSize, int noOfDoors, String fuelType, String model, String color) {
-        super();
-        this.trunkSize = trunkSize;
-        this.noOfDoors = noOfDoors;
-        this.fuelType = fuelType;
-        this.model = model;
-        this.color = color;
+    /******************************
+                Constructor
+    *******************************/
+    public Car(
+            String motorcycleId, 
+            String model,
+            double baseRentalRate,
+            boolean isAvailable,
+            String year,
+            String registrationNum,
+            int noOfSeats,
+            String make,
+            String renterId,
+            Integer[] customerRatings,
+            double trunkSize, 
+            int noOfDoors, 
+            String fuelType, 
+            String color
+    ) {
+            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customerRatings);
+            this.trunkSize = trunkSize;
+            this.noOfDoors = noOfDoors;
+            this.fuelType = fuelType;
+            this.color = color;
     }
     
     /******************************
@@ -24,8 +40,6 @@ public class Car extends Vehicle implements Rentable {
     public int getNoOfDoors() { return this.noOfDoors; }
     
     public String getFuelType() { return this.fuelType; }
-    
-    public String getModel() { return this.model; }
     
     public String getColor() { return this.color; }
     
