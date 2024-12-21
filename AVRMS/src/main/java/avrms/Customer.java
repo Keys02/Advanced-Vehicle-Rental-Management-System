@@ -1,6 +1,6 @@
 package avrms;
 
-public class Customer {
+public class Customer implements LoyaltyProgram {
     private String customerId;
     private String firstName;
     private String lastName;
@@ -59,11 +59,12 @@ public class Customer {
     }
     
     //Loyalty program implementation
-    public String putOnLoyaltyProgram(int rentalCount){
+    @Override
+    public String putOnLoyaltyProgram(){
         if(this.rentalPoints >= 10) {
             return "You have earned a free rental according to your current points";
         } else {
-            return "You have earned the required point to be put on a loyalty program";
+            return "You haven't earned the required points to be put on a loyalty program";
         }
     }
 
