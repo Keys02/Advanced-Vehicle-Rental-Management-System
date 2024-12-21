@@ -9,14 +9,22 @@ public class Customer implements LoyaltyProgram {
     private int rentalPoints;
     private Boolean hasLicense;
     
-    public Customer(String customerId, String firstName, String lastName, String contactInfo, int rentalPoints, Boolean hasLicense){
-        this.customerId = customerId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.contactInfo = contactInfo;
-        this.address = address;
-        this.rentalPoints = rentalPoints;
-        this.hasLicense = hasLicense;
+    public Customer(
+            String customerId, 
+            String firstName, 
+            String lastName, 
+            String contactInfo, 
+            String address, 
+            int rentalPoints, 
+            Boolean hasLicense
+    ){
+            this.customerId = customerId;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.contactInfo = contactInfo;
+            this.address = address;
+            this.rentalPoints = rentalPoints;
+            this.hasLicense = hasLicense;
     }
     
     /******************************

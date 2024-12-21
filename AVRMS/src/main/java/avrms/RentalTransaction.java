@@ -4,23 +4,28 @@ public class RentalTransaction {
     private String transactionId;
     private String customerId;
     private String vehicleId;
-    private float rentalAmount;
+    private double rentalAmount;
     private String startDate;
     private String endDate;
     private String paymentStatus;
-    private float lateFees;
-    private float securityDeposit;
+    private double lateFees;
+    private int lateReturnInHours;
+    private double securityDeposit;
     
+    /******************************
+            Constructor
+    *******************************/
     public RentalTransaction(
             String transactionId, 
             String customerId, 
             String vehicleId, 
-            float rentalAmount, 
+            double rentalAmount, 
             String startDate, 
             String endDate, 
             String paymentStatus, 
-            float lateFees, 
-            float securityDeposit
+            double lateFees,
+            int lateReturnInHours,
+            double securityDeposit
     ) {
         this.transactionId = transactionId;
         this.customerId = customerId;
@@ -30,6 +35,7 @@ public class RentalTransaction {
         this.endDate = endDate;
         this.paymentStatus = paymentStatus;
         this.lateFees = lateFees;
+        this.lateReturnInHours = lateReturnInHours;
         this.securityDeposit = securityDeposit;
     }
     
@@ -42,7 +48,7 @@ public class RentalTransaction {
     
     public String getVehicleId() { return this.vehicleId; }
     
-    public float getRentalAmount(){ return this.rentalAmount; }
+    public double getRentalAmount(){ return this.rentalAmount; }
     
     public String getStartDate() { return this.startDate; }
     
@@ -50,9 +56,11 @@ public class RentalTransaction {
     
     public String getPaymentStatus() { return this.paymentStatus; }
     
-    public float getLateFees() { return this.lateFees; }
+    public double getLateFees() { return this.lateFees; }
     
-    public float getSecurityDeposit() { return this.securityDeposit; }
+    public int getLateReturnInHours() { return this.lateReturnInHours; }
+    
+    public double getSecurityDeposit() { return this.securityDeposit; }
     
     /******************************
                 Setters
@@ -63,7 +71,7 @@ public class RentalTransaction {
     
     public void setVehicleId(String id) { this.vehicleId = id; }
     
-    public void setRentalAmount(float amount){ this.rentalAmount = amount; }
+    public void setRentalAmount(double amount){ this.rentalAmount = amount; }
     
     public void setStartDate(String date) { this.startDate = date; }
     
@@ -71,8 +79,10 @@ public class RentalTransaction {
     
     public void setPaymentStatus(String status) { this.paymentStatus = status; }
     
-    public void setLateFees(float amount) { this.lateFees = amount; }
+    public void setLateFees(double amount) { this.lateFees = amount; }
     
-    public void setSecurityDeposit(float amount) { this.securityDeposit = amount; }
+    public void setLateReturnInHours(int noOfHours){ this.lateReturnInHours = noOfHours; }
+    
+    public void setSecurityDeposit(double amount) { this.securityDeposit = amount; }
     
 }

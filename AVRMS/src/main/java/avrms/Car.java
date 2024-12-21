@@ -10,7 +10,7 @@ public class Car extends Vehicle implements Rentable {
                 Constructor
     *******************************/
     public Car(
-            String motorcycleId, 
+            String carId, 
             String model,
             double baseRentalRate,
             boolean isAvailable,
@@ -19,13 +19,13 @@ public class Car extends Vehicle implements Rentable {
             int noOfSeats,
             String make,
             String renterId,
-            Integer[] customerRatings,
+            Integer[] customersRatings,
             double trunkSize, 
             int noOfDoors, 
             String fuelType, 
             String color
     ) {
-            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customerRatings);
+            super(carId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customersRatings);
             this.trunkSize = trunkSize;
             this.noOfDoors = noOfDoors;
             this.fuelType = fuelType;
@@ -53,17 +53,17 @@ public class Car extends Vehicle implements Rentable {
     public void setFuelType(String type) { this.fuelType = type; }
     
     // Fine for delay implementation
-    public long calculateDelayFine(int durationInHours) {
+    public long calculateLateReturnFine(RentalTransaction rentalTransaction) {
         int fineAmountHourly = 40;
-        long fineAmount = durationInHours * fineAmountHourly; 
+        long fineAmount = rentalTransaction.getLateReturnInHours() * fineAmountHourly; 
         return fineAmount;
     }
     
     //Vehicle abstract methods implementation
     @Override
-    float calculateRentalCost(int days) {
-        float dayRentalCost = 800;
-        float rentalCost = days * dayRentalCost;
+    double calculateRentalCost(int days) {
+        double dailyRentalCost = 800;
+        double rentalCost = days * dailyRentalCost;
         return rentalCost;
     }
 
@@ -80,7 +80,7 @@ public class Car extends Vehicle implements Rentable {
     //Rentable abstract method implementation
     @Override
     public String rent(Customer customer, int days) {
-        return "The car has been rented to" + customer + "for" + days + "days";
+        return this.getModel() + " with id " +this.getVehicleId() + " has been rented to " + customer.getFirstName() + " " + customer.getLastName() + " " + "for " + days + " days";
     }
     
     @Override

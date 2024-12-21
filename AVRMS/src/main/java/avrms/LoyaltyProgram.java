@@ -1,5 +1,5 @@
 package avrms;
 
-public interface LoyaltyProgram {
+public interface LoyaltyProgram { 
     String putOnLoyaltyProgram();
 }

@@ -1,1 +1,10 @@
+avrms\Rentable.class
+avrms\Car.class
+avrms\RentalTransaction.class
+avrms\Motorcycle.class
+avrms\Vehicle.class
+avrms\LoyaltyProgram.class
 avrms\AVRMS.class
+avrms\Truck.class
+avrms\Customer.class
+avrms\RentalAgency.class

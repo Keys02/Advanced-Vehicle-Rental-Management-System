@@ -32,9 +32,9 @@ public class RentalAgency {
     /******************************
                 Setters
     *******************************/
-    public void setAgencyName(String name) { this.agencyName = agencyName; }
+    public void setAgencyName(String name) { this.agencyName = name; }
     
     public void setLocation(String location) { this.location = location; }
     
-    public void setVehicles(String[] vehicles){ this.vehiclesFleet = vehicles; }
+    public void setVehiclesFleet(String[] vehicles){ this.vehiclesFleet = vehicles; }
 }

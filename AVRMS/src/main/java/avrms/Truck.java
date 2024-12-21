@@ -10,7 +10,7 @@ public class Truck extends Vehicle implements Rentable {
                 Constructor
     *******************************/
     public Truck(
-            String motorcycleId, 
+            String truckId, 
             String model,
             double baseRentalRate,
             boolean isAvailable,
@@ -25,7 +25,7 @@ public class Truck extends Vehicle implements Rentable {
             String type, 
             int noOfDoors
     ) {
-            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customerRatings);
+            super(truckId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customerRatings);
             this.loadCap = loadCap;
             this.towCap = towCap;
             this.type = type;
@@ -55,17 +55,17 @@ public class Truck extends Vehicle implements Rentable {
     public void setNoOfDoors(int num) { this.noOfDoors = num; }
 
     // Fine for delay implementation
-    public long calculateDelayFine(int durationInHours) {
+    public long calculateLateReturnFine(RentalTransaction rentalTransaction) {
         int fineAmountHourly = 50;
-        long fineAmount = durationInHours * fineAmountHourly; 
+        long fineAmount = rentalTransaction.getLateReturnInHours() * fineAmountHourly; 
         return fineAmount;
     }
     
     //Vehicle abstract methods implementation
     @Override
-    float calculateRentalCost(int days) {
-        float dayRentalCost = 1500;
-        float rentalCost = days * dayRentalCost;
+    double calculateRentalCost(int days) {
+        double dayRentalCost = 1500;
+        double rentalCost = days * dayRentalCost;
         return rentalCost;
     }
 
@@ -82,7 +82,7 @@ public class Truck extends Vehicle implements Rentable {
     //Rentable abstract method implementation
     @Override
     public String rent(Customer customer, int days) {
-        return "The truck has been rented to" + customer + "for" + days + "days";
+        return this.getModel() + " with id " +this.getVehicleId() + " has been rented to " + customer.getFirstName() + " " + customer.getLastName() + " " + "for " + days + " days";
     }
     
     @Override

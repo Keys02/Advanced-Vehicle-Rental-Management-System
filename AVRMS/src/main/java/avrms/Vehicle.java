@@ -47,7 +47,7 @@ abstract class Vehicle {
     /******************************
             Abstract methods
     *******************************/
-    abstract float calculateRentalCost(int days);
+    abstract double calculateRentalCost(int days);
     
     abstract String isAvailableForRental();
     
