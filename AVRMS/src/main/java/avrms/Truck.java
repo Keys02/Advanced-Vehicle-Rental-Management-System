@@ -103,6 +103,7 @@ public class Truck extends Vehicle implements Rentable {
     
     @Override
     public String getRentalStatus(){
+        //Check if the vehicle is rented
         if(this.getIsAvailable()){
             return this.getModel() + " with id " + this.getVehicleId() + " is yet to be rented";
         } else {
