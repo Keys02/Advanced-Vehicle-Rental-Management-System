@@ -48,7 +48,7 @@ abstract class Vehicle {
     /******************************
             Abstract methods
     *******************************/
-    abstract double calculateRentalCost(int days);
+    abstract String calculateRentalCost(int days);
     
     abstract String isAvailableForRental();
     
@@ -75,16 +75,6 @@ abstract class Vehicle {
     
     public String getRenterName() { return this.renterName; }
     
-//    public double getRating() {
-//        // Average of the customers ratings
-//        double sumRating = 0;
-//        for(int i = 0; i < (this.customersRatings).length; i++){
-//            sumRating += (this.customersRatings)[i];
-//        }
-//        double rating = sumRating / (this.customersRatings).length;
-//        return rating;
-//    }
-    
     public double getRating() {
         // Average of the customers ratings
         double sumRating = 0;
@@ -92,6 +82,7 @@ abstract class Vehicle {
             sumRating += (this.customersRatings)[i];
         }
         
+        //Converting the rating to one decimal place
         double rating = sumRating / (this.customersRatings).length;
         DecimalFormat df = new DecimalFormat("#.#");
         return Double.parseDouble(df.format(rating));

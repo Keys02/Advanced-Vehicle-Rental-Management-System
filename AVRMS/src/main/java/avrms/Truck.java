@@ -54,18 +54,18 @@ public class Truck extends Vehicle implements Rentable {
     public void setNoOfDoors(int num) { this.noOfDoors = num; }
 
     // Fine for delay implementation
-    public long calculateLateReturnFine(RentalTransaction rentalTransaction) {
+    public String calculateLateReturnFine(RentalTransaction rentalTransaction) {
         int fineAmountHourly = 50;
         long fineAmount = rentalTransaction.getLateReturnInHours() * fineAmountHourly; 
-        return fineAmount;
+        return "$" + fineAmount;
     }
     
     //Vehicle abstract methods implementation
     @Override
-    double calculateRentalCost(int days) {
+    String calculateRentalCost(int days) {
         double dayRentalCost = 1500;
         double rentalCost = days * dayRentalCost;
-        return rentalCost;
+        return "$" + rentalCost;
     }
 
     @Override
@@ -81,16 +81,21 @@ public class Truck extends Vehicle implements Rentable {
     //Rentable abstract methods implementation
     @Override
     public void rent(Customer customer, int days) {
+        // Check if a customer has a license and the vehicle rental status
         if(customer.getHasLicense()){
+            // If the customer has a license
             if(this.getRenterId() == null && this.getRenterName() == null){
+                // If the vehicle is not rented
                 this.setIsAvailable(false);
                 this.setRenterId(customer.getCustomerId());
                 this.setRenterName(customer);
                 this.setRentalDays(days);
             } else {
+                // If the vehicle is rented
                 System.out.println("Rent cannot be initiated, " + "PS: " +this.getModel() + " with id " + this.getVehicleId() + " is already rented :(");
             }
         } else {
+            // If the customer has no license
             System.out.println("Rent cannot be initiated, PS: Customer has no license :(");
         }
     }
@@ -107,9 +112,14 @@ public class Truck extends Vehicle implements Rentable {
     
     
     @Override
-    public String returnVehicle() {
+    public String returnVehicle(RentalTransaction transaction) {
         this.setIsAvailable(true);
-        return "Returning " + this.getModel() + " with id " + this.getVehicleId() + " to the parking lot";
+        //Check if the customer had late hours accumulated
+        if(transaction.getLateReturnInHours() == 0){
+            return  this.getModel() + " with id " + this.getVehicleId() + " is returned to the parking lot";
+        } else {
+           return this. getModel() + " with id " + this.getVehicleId() + " is returned to the parking lot with a fine amount of $" + calculateLateReturnFine(transaction);
+        }
     }
     
 }

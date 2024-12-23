@@ -63,6 +63,7 @@ public class Customer implements LoyaltyProgram {
     
     //Eligibility check
     public String checkEligibility(){
+        // Check if a customer is eligible to drive
         if(this.hasLicense){
             return "You can rent a vehicle stay safe out there :)";
         } else {
@@ -73,6 +74,7 @@ public class Customer implements LoyaltyProgram {
     //Loyalty program implementation
     @Override
     public String putOnLoyaltyProgram(){
+        // Check the rentalPoints of a customer if he deserves to be put on a loyalty program
         if(this.rentalPoints >= 10) {
             return "You have earned a free rental according to your current points";
         } else {

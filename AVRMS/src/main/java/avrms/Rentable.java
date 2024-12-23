@@ -5,5 +5,5 @@ public interface Rentable {
     
     String getRentalStatus();
     
-    String returnVehicle();
+    String returnVehicle(RentalTransaction transaction);
 }

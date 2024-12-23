@@ -23,7 +23,6 @@ public class RentalTransaction {
             String startDate, 
             String endDate, 
             String paymentStatus, 
-            double lateFees,
             int lateReturnInHours,
             double securityDeposit
     ) {
@@ -34,7 +33,6 @@ public class RentalTransaction {
         this.startDate = startDate;
         this.endDate = endDate;
         this.paymentStatus = paymentStatus;
-        this.lateFees = lateFees;
         this.lateReturnInHours = lateReturnInHours;
         this.securityDeposit = securityDeposit;
     }
@@ -56,8 +54,6 @@ public class RentalTransaction {
     
     public String getPaymentStatus() { return this.paymentStatus; }
     
-    public double getLateFees() { return this.lateFees; }
-    
     public int getLateReturnInHours() { return this.lateReturnInHours; }
     
     public double getSecurityDeposit() { return this.securityDeposit; }
@@ -78,8 +74,6 @@ public class RentalTransaction {
     public void setEndDate(String date) { this.endDate = date; }
     
     public void setPaymentStatus(String status) { this.paymentStatus = status; }
-    
-    public void setLateFees(double amount) { this.lateFees = amount; }
     
     public void setLateReturnInHours(int noOfHours){ this.lateReturnInHours = noOfHours; }
     

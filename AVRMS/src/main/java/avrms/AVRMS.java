@@ -7,7 +7,7 @@ public class AVRMS {
         RentalAgency Alamo = new RentalAgency("Alamo", "San Francisco California", new String[]{"Cars", "Planes", "Jet", "Motorcycles"});
         
         // Creating RentalTransaction object
-        RentalTransaction firstRentalTransaction = new RentalTransaction("98637", "000", "100", 800.98, "21st December 2024", "31st December 2024", "Unpaid", 0, 5, 200);
+        RentalTransaction firstRentalTransaction = new RentalTransaction("98637", "000", "100", 800.98, "21st December 2024", "31st December 2024", "Unpaid", 5, 200);
         
         // Creating Customer object
         Customer firstCustomer = new Customer("000", "Steve", "Rogers", "0244083723", "San Jose California", 10, true);
@@ -51,6 +51,8 @@ public class AVRMS {
         System.out.println(firstMotorcycle.getModel());
         firstMotorcycle.rent(firstCustomer, 20);
         System.out.println(firstMotorcycle.getRentalStatus());
+        System.out.println(firstMotorcycle.calculateRentalCost(100));
+        System.out.println(firstMotorcycle.returnVehicle(firstRentalTransaction));
         System.out.print("\n");
         
         // Testing Truck class
@@ -58,6 +60,7 @@ public class AVRMS {
         System.out.println(firstTruck.getModel());
         firstTruck.rent(secondCustomer, 100);
         System.out.println(firstTruck.getRentalStatus());
+        System.out.println(firstTruck.calculateRentalCost(50));
         System.out.print("\n");
         
         // Testing RentalTransaction class
