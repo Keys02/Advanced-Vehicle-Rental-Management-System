@@ -4,7 +4,6 @@ public class Motorcycle extends Vehicle implements Rentable {
     private String noOfWheels;
     private String suspensionType; //Values: Telescopic Forks, Upside-Down Forks, Dual Shock Absorbers, Monoshock Suspension, Air Suspension, 
     private String brakingSystem; //Values: Disc brakes, Drum brakes, Combined brakes, ABS (Anti-lock Braking System)
-    private int rentalDays;
     
     /******************************
                 Constructor
@@ -18,14 +17,12 @@ public class Motorcycle extends Vehicle implements Rentable {
             String registrationNum,
             int noOfSeats,
             String make,
-            String renterId,
-            String renterName,
             Integer[] customerRatings,
             String noOfWheels,
             String suspensionType, 
             String brakingSystem
     ) {
-            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, renterName, customerRatings);
+            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, customerRatings);
             this.noOfWheels = noOfWheels;
             this.suspensionType = suspensionType;
             this.brakingSystem = brakingSystem;
@@ -80,7 +77,7 @@ public class Motorcycle extends Vehicle implements Rentable {
         this.setIsAvailable(false);
         this.setRenterId(customer.getCustomerId());
         this.setRenterName(customer);
-        this.rentalDays = days;
+        this.setRentalDays(days);
     }
     
     
@@ -89,7 +86,7 @@ public class Motorcycle extends Vehicle implements Rentable {
         if(this.getIsAvailable()){
             return this.getModel() + " with id " + this.getVehicleId() + " is yet to be rented";
         } else {
-            return this.getModel() + " with id " + this.getVehicleId() + " is rented to " + this.getRenterName() + " with id " + this.getRenterId() + " for " + this.rentalDays + " days";
+            return this.getModel() + " with id " + this.getVehicleId() + " is rented to " + this.getRenterName() + " with id " + this.getRenterId() + " for " + this.getRentalDays() + " days";
         }
     }
     

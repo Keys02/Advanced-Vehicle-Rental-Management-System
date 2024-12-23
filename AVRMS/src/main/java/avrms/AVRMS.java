@@ -10,13 +10,13 @@ public class AVRMS {
         Customer firstCustomer = new Customer("000", "Steve", "Rogers", "0244083723", "San Jose California", 20, true);
         
         // Creating Car object
-        Car firstCar = new Car("100", "Honda Civic", 800.0, true, "2021", "ZA-094383", 4, "Honda", null , null , new Integer[]{4,5}, 3000, 4, "gasoline", "red");
+        Car firstCar = new Car("100", "Honda Civic", 800.0, true, "2021", "ZA-094383", 4, "Honda", new Integer[]{4,5}, 3000, 4, "gasoline", "red");
         
         // Creating RentalTransaction object
         RentalTransaction firstRentalTransaction = new RentalTransaction("98637", "000", "100", 800.98, "21st December 2024", "31st December 2024", "Unpaid", 0, 5, 200);
         
         // Creating a motorcycle object
-        Motorcycle firstMotorcycle = new Motorcycle("300", "Ducati", 400, true, "2021", "AZ-4530-93", 2, "Honda", null, null, new Integer[]{3,5}, "2", "Telescopic Forks", "Disc brake");
+        Motorcycle firstMotorcycle = new Motorcycle("300", "Ducati", 400, true, "2021", "AZ-4530-93", 2, "Honda", new Integer[]{3,5}, "2", "Telescopic Forks", "Disc brake");
         
         
         // Testing Customer class

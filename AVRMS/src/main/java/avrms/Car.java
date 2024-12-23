@@ -5,7 +5,6 @@ public class Car extends Vehicle implements Rentable {
     private int noOfDoors;
     private String fuelType;
     private String color;
-    private int rentalDays;
     
     /******************************
                 Constructor
@@ -19,15 +18,13 @@ public class Car extends Vehicle implements Rentable {
             String registrationNum,
             int noOfSeats,
             String make,
-            String renterId,
-            String renterName,
             Integer[] customersRatings,
             double trunkSize, 
             int noOfDoors, 
             String fuelType, 
             String color
     ) {
-            super(carId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, renterName, customersRatings);
+            super(carId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, customersRatings);
             this.trunkSize = trunkSize;
             this.noOfDoors = noOfDoors;
             this.fuelType = fuelType;
@@ -85,7 +82,7 @@ public class Car extends Vehicle implements Rentable {
         this.setIsAvailable(false);
         this.setRenterId(customer.getCustomerId());
         this.setRenterName(customer);
-        this.rentalDays = days;
+        this.setRentalDays(days);
     }
     
     
@@ -94,7 +91,7 @@ public class Car extends Vehicle implements Rentable {
         if(this.getIsAvailable()){
             return this.getModel() + " with id " + this.getVehicleId() + " is yet to be rented";
         } else {
-            return this.getModel() + " with id " + this.getVehicleId() + " is rented to " + this.getRenterName() + " with id " + this.getRenterId() + " for " + this.rentalDays + " days";
+            return this.getModel() + " with id " + this.getVehicleId() + " is rented to " + this.getRenterName() + " with id " + this.getRenterId() + " for " + this.getRentalDays() + " days";
         }
     }
     

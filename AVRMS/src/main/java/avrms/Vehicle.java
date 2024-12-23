@@ -16,6 +16,7 @@ abstract class Vehicle {
     private String renterId = null;
     private String renterName = null;
     private Integer[] customersRatings;
+    private int rentalDays;
     
     /******************************
             Constructor
@@ -29,8 +30,6 @@ abstract class Vehicle {
                 String registrationNum,
                 int noOfSeats,
                 String make,
-                String renterId,
-                String renterName,
                 Integer[] customersRatings
             ) {
                 this.vehicleId = vehicleId;
@@ -41,8 +40,6 @@ abstract class Vehicle {
                 this.registrationNum = registrationNum;
                 this.noOfSeats = noOfSeats;
                 this.make = make;
-                this.renterId = renterId;
-                this.renterName = renterName;
                 this.customersRatings = customersRatings;
     }
     
@@ -87,6 +84,8 @@ abstract class Vehicle {
         return rating;
     }
     
+    public int getRentalDays() { return this.rentalDays; }
+    
     
     /*****************************
                 Setters
@@ -122,6 +121,10 @@ abstract class Vehicle {
             this.customersRatings = customersRatingsList.toArray(this.customersRatings);
             return "Thanks for rating :)";
         }
+    }
+    
+    public void setRentalDays(int days){
+        this.rentalDays = days;
     }
     
 }
