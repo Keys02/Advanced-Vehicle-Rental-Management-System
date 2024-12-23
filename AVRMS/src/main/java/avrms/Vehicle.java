@@ -13,7 +13,8 @@ abstract class Vehicle {
     private String registrationNum;
     private int noOfSeats;
     private String make; //Brand of the car
-    private String renterId;
+    private String renterId = null;
+    private String renterName = null;
     private Integer[] customersRatings;
     
     /******************************
@@ -29,6 +30,7 @@ abstract class Vehicle {
                 int noOfSeats,
                 String make,
                 String renterId,
+                String renterName,
                 Integer[] customersRatings
             ) {
                 this.vehicleId = vehicleId;
@@ -40,6 +42,7 @@ abstract class Vehicle {
                 this.noOfSeats = noOfSeats;
                 this.make = make;
                 this.renterId = renterId;
+                this.renterName = renterName;
                 this.customersRatings = customersRatings;
     }
     
@@ -72,7 +75,7 @@ abstract class Vehicle {
     
     public String getRenterId() { return this.renterId; }
     
-//    public int getRating() { return this.rating; }
+    public String getRenterName() { return this.renterName; }
     
     public int getRating() {
         // Average of the customers ratings
@@ -105,6 +108,8 @@ abstract class Vehicle {
     public void setMake(String make) { this.make = make; }
     
     public void setRenterId(String id) { this.renterId = id; }
+    
+    public void setRenterName(Customer customer) { this.renterName = customer.getFirstName() + " " + customer.getLastName(); }
     
     // Rating system implementation
     public String setRating(Customer customerId, int rating){

@@ -5,6 +5,7 @@ public class Car extends Vehicle implements Rentable {
     private int noOfDoors;
     private String fuelType;
     private String color;
+    private int rentalDays;
     
     /******************************
                 Constructor
@@ -19,13 +20,14 @@ public class Car extends Vehicle implements Rentable {
             int noOfSeats,
             String make,
             String renterId,
+            String renterName,
             Integer[] customersRatings,
             double trunkSize, 
             int noOfDoors, 
             String fuelType, 
             String color
     ) {
-            super(carId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customersRatings);
+            super(carId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, renterName, customersRatings);
             this.trunkSize = trunkSize;
             this.noOfDoors = noOfDoors;
             this.fuelType = fuelType;
@@ -72,19 +74,35 @@ public class Car extends Vehicle implements Rentable {
       if(this.getIsAvailable()){
           return "Available";
       } else {
-          return "Unavaiable";
+          return "Unavailable";
       }
     }
     
     
-    //Rentable abstract method implementation
+    //Rentable abstract methods implementation
     @Override
-    public String rent(Customer customer, int days) {
-        return this.getModel() + " with id " +this.getVehicleId() + " has been rented to " + customer.getFirstName() + " " + customer.getLastName() + " " + "for " + days + " days";
+    public void rent(Customer customer, int days) {
+        this.setIsAvailable(false);
+        this.setRenterId(customer.getCustomerId());
+        this.setRenterName(customer);
+        this.rentalDays = days;
+    }
+    
+    
+    @Override
+    public String getRentalStatus(){
+        if(this.getIsAvailable()){
+            return this.getModel() + " with id " + this.getVehicleId() + " is yet to be rented";
+        } else {
+            return this.getModel() + " with id " + this.getVehicleId() + " is rented to " + this.getRenterName() + " with id " + this.getRenterId() + " for " + this.rentalDays + " days";
+        }
     }
     
     @Override
     public String returnVehicle() {
-        return "Returning car to the parking lot";
+        this.setIsAvailable(true);
+        return "Returning " + this.getModel() + " with id " + this.getVehicleId() + " to the parking lot";
     }
+    
+    
 }

@@ -4,6 +4,7 @@ public class Motorcycle extends Vehicle implements Rentable {
     private String noOfWheels;
     private String suspensionType; //Values: Telescopic Forks, Upside-Down Forks, Dual Shock Absorbers, Monoshock Suspension, Air Suspension, 
     private String brakingSystem; //Values: Disc brakes, Drum brakes, Combined brakes, ABS (Anti-lock Braking System)
+    private int rentalDays;
     
     /******************************
                 Constructor
@@ -18,12 +19,13 @@ public class Motorcycle extends Vehicle implements Rentable {
             int noOfSeats,
             String make,
             String renterId,
+            String renterName,
             Integer[] customerRatings,
             String noOfWheels,
             String suspensionType, 
             String brakingSystem
     ) {
-            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, customerRatings);
+            super(motorcycleId, model, baseRentalRate, isAvailable, year, registrationNum, noOfSeats, make, renterId, renterName, customerRatings);
             this.noOfWheels = noOfWheels;
             this.suspensionType = suspensionType;
             this.brakingSystem = brakingSystem;
@@ -72,14 +74,29 @@ public class Motorcycle extends Vehicle implements Rentable {
     }
     
     
-    //Rentable abstract method implementation
+    //Rentable abstract methods implementation
     @Override
-    public String rent(Customer customer, int days) {
-        return this.getModel() + " with id " +this.getVehicleId() + " has been rented to " + customer.getFirstName() + " " + customer.getLastName() + " " + "for " + days + " days";
+    public void rent(Customer customer, int days) {
+        this.setIsAvailable(false);
+        this.setRenterId(customer.getCustomerId());
+        this.setRenterName(customer);
+        this.rentalDays = days;
+    }
+    
+    
+    @Override
+    public String getRentalStatus(){
+        if(this.getIsAvailable()){
+            return this.getModel() + " with id " + this.getVehicleId() + " is yet to be rented";
+        } else {
+            return this.getModel() + " with id " + this.getVehicleId() + " is rented to " + this.getRenterName() + " with id " + this.getRenterId() + " for " + this.rentalDays + " days";
+        }
     }
     
     @Override
     public String returnVehicle() {
-        return "Returning motorcycle to the parking lot";
+        this.setIsAvailable(true);
+        return "Returning " + this.getModel() + " with id " + this.getVehicleId() + " to the parking lot";
     }
+    
 }

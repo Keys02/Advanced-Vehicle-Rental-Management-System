@@ -1,7 +1,9 @@
 package avrms;
 
 public interface Rentable {
-    String rent(Customer customer, int days);
+    void rent(Customer customer, int days);
+    
+    String getRentalStatus();
     
     String returnVehicle();
 }
