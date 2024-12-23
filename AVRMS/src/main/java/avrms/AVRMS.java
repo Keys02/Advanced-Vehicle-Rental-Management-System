@@ -13,7 +13,7 @@ public class AVRMS {
         Customer firstCustomer = new Customer("000", "Steve", "Rogers", "0244083723", "San Jose California", 10, true);
         
         // Creating Customer object
-        Customer secondCustomer = new Customer("001", "Joe", "Regan", "0534564321", "Houston Texas", 20, false);
+        Customer secondCustomer = new Customer("001", "Joe", "Regan", "0534564321", "Houston Texas", 20, true);
         
         // Creating Car object
         Car firstCar = new Car("100", "Honda Civic", 800.0, true, "2021", "ZA-094383", 4, "Honda", new Integer[]{4,5}, 3000, 4, "gasoline", "red");
@@ -31,40 +31,45 @@ public class AVRMS {
         System.out.println(firstCustomer.putOnLoyaltyProgram());
         System.out.println(firstCustomer.checkEligibility());
         System.out.println(secondCustomer.checkEligibility());
-        System.out.println("###################################################");
+        System.out.print("\n");
         
         // Testing RentalAgency class
         System.out.println("Testing RentalAgency class");
         Alamo.setVehiclesFleet(new String[]{"Aeroplane", "Cars", "Motorcycles"});
         System.out.println(Alamo.getVehiclesFleet());
-        System.out.println("###################################################");
+        System.out.print("\n");
         
         // Testing Car class
         System.out.println("Testing Car class");
-        firstCar.rent(secondCustomer, 14);
-        System.out.println(firstCar.calculateLateReturnFine(firstRentalTransaction));
+        firstCar.rent(firstCustomer, 14);
+        firstCar.rent(secondCustomer, 40);
         System.out.println(firstCar.getRentalStatus());
-        System.out.println(firstCar.returnVehicle());
-        System.out.println("###################################################");
+        System.out.print("\n");
         
         // Testing Motorcycle class
         System.out.println("Testing Motorcycle class");
         System.out.println(firstMotorcycle.getModel());
         firstMotorcycle.rent(firstCustomer, 20);
         System.out.println(firstMotorcycle.getRentalStatus());
-        System.out.println("###################################################");
+        System.out.print("\n");
         
         // Testing Truck class
         System.out.println("Testing Truck class");
         System.out.println(firstTruck.getModel());
         firstTruck.rent(secondCustomer, 100);
         System.out.println(firstTruck.getRentalStatus());
-        System.out.println("###################################################");
+        System.out.print("\n");
         
         // Testing RentalTransaction class
         System.out.println("Testing RentalTransaction class");
         System.out.println(firstRentalTransaction.getStartDate());
-        System.out.println("###################################################");
+        System.out.print("\n");
+        
+        //Testing RatingSystem
+        System.out.println("Testing Rating system");
+        System.out.println(firstCar.rate(firstCustomer, 4));
+        System.out.println(firstCar.rate(secondCustomer, 5));
+        System.out.println(firstCar.getRating());
         
     }
 }

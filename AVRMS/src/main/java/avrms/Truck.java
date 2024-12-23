@@ -82,10 +82,14 @@ public class Truck extends Vehicle implements Rentable {
     @Override
     public void rent(Customer customer, int days) {
         if(customer.getHasLicense()){
-            this.setIsAvailable(false);
-            this.setRenterId(customer.getCustomerId());
-            this.setRenterName(customer);
-            this.setRentalDays(days);
+            if(this.getRenterId() == null && this.getRenterName() == null){
+                this.setIsAvailable(false);
+                this.setRenterId(customer.getCustomerId());
+                this.setRenterName(customer);
+                this.setRentalDays(days);
+            } else {
+                System.out.println("Rent cannot be initiated, " + "PS: " +this.getModel() + " with id " + this.getVehicleId() + " is already rented :(");
+            }
         } else {
             System.out.println("Rent cannot be initiated, PS: Customer has no license :(");
         }
@@ -100,6 +104,7 @@ public class Truck extends Vehicle implements Rentable {
             return this.getModel() + " with id " + this.getVehicleId() + " is rented to " + this.getRenterName() + " with id " + this.getRenterId() + " for " + this.getRentalDays() + " days";
         }
     }
+    
     
     @Override
     public String returnVehicle() {

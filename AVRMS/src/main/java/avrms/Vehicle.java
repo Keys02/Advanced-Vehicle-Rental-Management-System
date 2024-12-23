@@ -3,6 +3,7 @@ package avrms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.text.DecimalFormat;
 
 abstract class Vehicle {
     private String vehicleId;
@@ -74,15 +75,28 @@ abstract class Vehicle {
     
     public String getRenterName() { return this.renterName; }
     
-    public int getRating() {
+//    public double getRating() {
+//        // Average of the customers ratings
+//        double sumRating = 0;
+//        for(int i = 0; i < (this.customersRatings).length; i++){
+//            sumRating += (this.customersRatings)[i];
+//        }
+//        double rating = sumRating / (this.customersRatings).length;
+//        return rating;
+//    }
+    
+    public double getRating() {
         // Average of the customers ratings
-        int sumRating = 0;
+        double sumRating = 0;
         for(int i = 0; i < (this.customersRatings).length; i++){
             sumRating += (this.customersRatings)[i];
         }
-        int rating = sumRating / (this.customersRatings).length;
-        return rating;
+        
+        double rating = sumRating / (this.customersRatings).length;
+        DecimalFormat df = new DecimalFormat("#.#");
+        return Double.parseDouble(df.format(rating));
     }
+    
     
     public int getRentalDays() { return this.rentalDays; }
     
@@ -111,15 +125,15 @@ abstract class Vehicle {
     public void setRenterName(Customer customer) { this.renterName = customer.getFirstName() + " " + customer.getLastName(); }
     
     // Rating system implementation
-    public String setRating(Customer customerId, int rating){
+    public String rate(Customer customer, int rating){
+        List<Integer> customersRatingsList = new ArrayList<Integer>(Arrays.asList(this.customersRatings));
         //Check if the rating is a number from 1 - 5
         if(rating < 1 | rating > 5) {
             return "Rating must be a number from 1 - 5";
         } else {
-            List<Integer> customersRatingsList = new ArrayList<Integer>(Arrays.asList(this.customersRatings));
             customersRatingsList.add(rating);
             this.customersRatings = customersRatingsList.toArray(this.customersRatings);
-            return "Thanks for rating :)";
+            return "Thanks for rating <3";
         }
     }
     
