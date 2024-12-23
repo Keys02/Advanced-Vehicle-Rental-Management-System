@@ -81,10 +81,14 @@ public class Truck extends Vehicle implements Rentable {
     //Rentable abstract methods implementation
     @Override
     public void rent(Customer customer, int days) {
-        this.setIsAvailable(false);
-        this.setRenterId(customer.getCustomerId());
-        this.setRenterName(customer);
-        this.setRentalDays(days);
+        if(customer.getHasLicense()){
+            this.setIsAvailable(false);
+            this.setRenterId(customer.getCustomerId());
+            this.setRenterName(customer);
+            this.setRentalDays(days);
+        } else {
+            System.out.println("Rent cannot be initiated, PS: Customer has no license :(");
+        }
     }
     
     

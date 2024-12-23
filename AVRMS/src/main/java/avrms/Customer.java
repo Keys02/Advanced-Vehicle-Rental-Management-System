@@ -42,6 +42,8 @@ public class Customer implements LoyaltyProgram {
     
     public String getAddress() { return this.address; }
     
+    public Boolean getHasLicense() { return this.hasLicense; }
+    
     /******************************
                 Setters
     *******************************/
@@ -57,12 +59,14 @@ public class Customer implements LoyaltyProgram {
     
     public void setAddress(String address) { this.address = address; }
     
+    public void setHasLicense(boolean hasLicense) { this.hasLicense = hasLicense; }
+    
     //Eligibility check
     public String checkEligibility(){
         if(this.hasLicense){
             return "You can rent a vehicle stay safe out there :)";
         } else {
-            return "You cannot rent a vehicle get a license first";
+            return "You cannot rent a vehicle get a license first :(";
         }
     }
     
